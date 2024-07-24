@@ -1,4 +1,7 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
 import torch
+
 from transformers import BertTokenizer, BertModel
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -20,13 +23,9 @@ attention_head = last_layer_attention[0][0].detach().numpy()
 
 print("Attention weights for the first head in the last layer:\n", attention_head)
 
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-plt.figure(figsize=(10, 8))
-sns.heatmap(attention_head, cmap='viridis', xticklabels=tokenizer.convert_ids_to_tokens(input_ids[0]), yticklabels=tokenizer.convert_ids_to_tokens(input_ids[0]))
-plt.title('Attention Weights for the First Head in the Last Layer')
-plt.xlabel('Tokens')
-plt.ylabel('Tokens')
-plt.show()
+# plt.figure(figsize=(10, 8))
+# sns.heatmap(attention_head, cmap='viridis', xticklabels=tokenizer.convert_ids_to_tokens(input_ids[0]), yticklabels=tokenizer.convert_ids_to_tokens(input_ids[0]))
+# plt.title('Attention Weights for the First Head in the Last Layer')
+# plt.xlabel('Tokens')
+# plt.ylabel('Tokens')
+# plt.show()
